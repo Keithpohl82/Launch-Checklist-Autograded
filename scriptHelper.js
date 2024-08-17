@@ -4,7 +4,7 @@
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     // Here is the HTML formatting for our mission target div.
-    /*
+                `
                  <h2>Mission Destination</h2>
                  <ol>
                      <li>Name: </li>
@@ -14,7 +14,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                      <li>Number of Moons: </li>
                  </ol>
                  <img src="">
-    */
+                 `
+    
  }
  
  function validateInput(testInput) { 
@@ -40,19 +41,14 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     const launchStatus = document.getElementById("launchStatus");
     const faultyItems = document.getElementById("faultyItems");
 
-    if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty") {
-        alert("Pilot and Co-pilot names are required!");
+    if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || 
+    validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty") {
+        alert("All fields are required");
         return;
     }
 
     if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number") {
         alert("Pilot and Co-pilot names must be strings!");
-        return;
-    }
-
-    
-    if (validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty") {
-        alert("Fuel level and cargo mass are required!");
         return;
     }
 
@@ -94,19 +90,26 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  
  async function myFetch() {
      let planetsReturned;
- 
-     planetsReturned = await fetch().then( function(response) {
-
-         });
-        
+     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {      
+        if(response.status >= 400){
+            throw new Error("bad response")           
+        }
+        else{
+            return response.json();
+        }                          
+     }); 
      return planetsReturned;
  }
 
- function pickPlanet(planets) {
+
+ function pickPlanet(planets) {  
+    let planetIndex = Math.floor(Math.random(planets.length) * planets.length);
+
+    return planets[planetIndex]
  }
  
-//  module.exports.addDestinationInfo = addDestinationInfo;
-//  module.exports.validateInput = validateInput;
-//  module.exports.formSubmission = formSubmission;
-//  module.exports.pickPlanet = pickPlanet; 
-//  module.exports.myFetch = myFetch;
+// module.exports.addDestinationInfo = addDestinationInfo;
+// module.exports.validateInput = validateInput;
+// module.exports.formSubmission = formSubmission;
+// module.exports.pickPlanet = pickPlanet; 
+ //module.exports.myFetch = myFetch;
