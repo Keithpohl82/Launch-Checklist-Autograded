@@ -1,12 +1,12 @@
 // Write your helper functions here!
 
-//require('cross-fetch/polyfill');
+require('cross-fetch/polyfill');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     // Here is the HTML formatting for our mission target div.
     
       
-               document.innerHTML = `
+              document.innerHTML += `
                  <h2>Mission Destination</h2>
                  <ol>
                      <li>Name: ${name}</li>
@@ -16,7 +16,9 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                      <li>Number of Moons: ${moons}</li>
                  </ol>
                  <img src="${imageUrl}">
-                `  
+                `;
+                
+
  }
 
  function validateInput(testInput) { 
@@ -45,18 +47,15 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
     if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || 
     validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty") {
-        alert("All fields are required");
-        return;
+        alert("All fields are required");       
     }
 
     if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number") {
         alert("Pilot and Co-pilot names must be strings!");
-        return;
     }
 
     if (validateInput(fuelLevel) === "Not a Number" || validateInput(cargoMass) === "Not a Number") {
         alert("Fuel level and cargo mass must be numbers!");
-        return;
     }
 
     faultyItems.style.visibility = "visible";
@@ -106,12 +105,12 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
  function pickPlanet(planets) {  
     let planetIndex = Math.floor(Math.random(planets.length) * planets.length);
-    console.log(`Your destination is ${planets[planetIndex].name}`)
+    
     return planets[planetIndex]
  }
  
-// module.exports.addDestinationInfo = addDestinationInfo;
-// module.exports.validateInput = validateInput;
-// module.exports.formSubmission = formSubmission;
-// module.exports.pickPlanet = pickPlanet; 
-// module.exports.myFetch = myFetch;
+module.exports.addDestinationInfo = addDestinationInfo;
+module.exports.validateInput = validateInput;
+module.exports.formSubmission = formSubmission;
+module.exports.pickPlanet = pickPlanet; 
+module.exports.myFetch = myFetch;
