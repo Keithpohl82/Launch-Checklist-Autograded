@@ -22,7 +22,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  }
 
  function validateInput(testInput) { 
-    if (testInput.trim() === "") {
+    if (testInput === "") {
         return "Empty";
     } else if (isNaN(Number(testInput))) {
         return "Not a Number";
@@ -37,16 +37,16 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     const copilotStatus = document.getElementById("copilotStatus");
     const fuelStatus = document.getElementById("fuelStatus");
     const cargoStatus = document.getElementById("cargoStatus"); 
-    pilot = document.querySelector("input[name=pilotName]").value;
-    copilot = document.querySelector("input[name=copilotName]").value;
-    fuelLevel = document.querySelector("input[name=fuelLevel]").value;  
-    cargoMass = document.querySelector("input[name=cargoMass]").value;
+    // pilot = document.querySelector("input[name=pilotName]").value;
+    // copilot = document.querySelector("input[name=copilotName]").value;
+    // fuelLevel = document.querySelector("input[name=fuelLevel]").value;  
+    // cargoLevel = document.querySelector("input[name=cargoMass]").value;
     const launchStatus = document.getElementById("launchStatus");
     const faultyItems = document.getElementById("faultyItems");
     
 
     if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || 
-    validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty") {
+    validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty") {
         //alert("All fields are required");       
     }
 
@@ -54,7 +54,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         //alert("Pilot and Co-pilot names must be strings!");
     }
 
-    if (validateInput(fuelLevel) === "Not a Number" || validateInput(cargoMass) === "Not a Number") {
+    if (validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number") {
         //alert("Fuel level and cargo mass must be numbers!");
     }
 
@@ -72,15 +72,15 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         fuelStatus.innerHTML = "Fuel level high enough for launch";
     }
 
-    if (Number(cargoMass) > 10000) {
-        cargoStatus.innerHTML = "Cargo mass too high for launch";
+    if (Number(cargoLevel) > 10000) {
+        cargoStatus.innerHTML = "Cargo mass too heavy for launch";
         readyForLaunch = false;
     } else {
         cargoStatus.innerHTML = "Cargo mass low enough for launch";
     }
 
     if (readyForLaunch) {
-        launchStatus.innerHTML = "Shuttle is ready for launch";
+        launchStatus.innerHTML = "Shuttle is Ready for Launch";
         launchStatus.style.color = "green";
     } else {
         launchStatus.innerHTML = "Shuttle Not Ready for Launch";
