@@ -4,20 +4,21 @@
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     // Here is the HTML formatting for our mission target div.
-                `
+    
+      
+               document.innerHTML = `
                  <h2>Mission Destination</h2>
                  <ol>
-                     <li>Name: </li>
-                     <li>Diameter: </li>
+                     <li>Name: ${name}</li>
+                     <li>Diameter: ${diameter}</li>
                      <li>Star: ${star}</li>
-                     <li>Distance from Earth: </li>
-                     <li>Number of Moons: </li>
+                     <li>Distance from Earth: ${distance}</li>
+                     <li>Number of Moons: ${moons}</li>
                  </ol>
-                 <img src="">
-                 `
-    
+                 <img src="${imageUrl}">
+                `  
  }
- 
+
  function validateInput(testInput) { 
     if (testInput.trim() === "") {
         return "Empty";
@@ -40,6 +41,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     cargoMass = document.querySelector("input[name=cargoMass]").value;
     const launchStatus = document.getElementById("launchStatus");
     const faultyItems = document.getElementById("faultyItems");
+    
 
     if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || 
     validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty") {
@@ -104,7 +106,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
  function pickPlanet(planets) {  
     let planetIndex = Math.floor(Math.random(planets.length) * planets.length);
-
+    console.log(`Your destination is ${planets[planetIndex].name}`)
     return planets[planetIndex]
  }
  
@@ -112,4 +114,4 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 // module.exports.validateInput = validateInput;
 // module.exports.formSubmission = formSubmission;
 // module.exports.pickPlanet = pickPlanet; 
- //module.exports.myFetch = myFetch;
+// module.exports.myFetch = myFetch;

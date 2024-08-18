@@ -12,9 +12,14 @@ window.addEventListener("load", function() {
         listedPlanets = result;
         //console.log(listedPlanets);
     }).then(function () {
+
          //console.log(listedPlanets);
         // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-        pickPlanet(listedPlanets);
+        
+        let destination = pickPlanet(listedPlanets);
+        let target = document.getElementById("missionTarget");
+        addDestinationInfo(target, destination.name, destination.diameter, destination.star, destination.distance, destination.moons, destination.image);
+
     })
     
     
@@ -26,6 +31,7 @@ window.addEventListener("load", function() {
         const copilotInput = document.querySelector("input[name=copilotName]").value;
         const fuelLevelInput = document.querySelector("input[name=fuelLevel]").value;
         const cargoMassInput = document.querySelector("input[name=cargoMass]").value;
+        
         formSubmission(document, pilotInput, copilotInput, fuelLevelInput, cargoMassInput);
     });
  });
