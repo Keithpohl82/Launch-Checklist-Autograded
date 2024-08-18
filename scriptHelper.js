@@ -47,15 +47,15 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
     if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || 
     validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty") {
-        alert("All fields are required");       
+        //alert("All fields are required");       
     }
 
     if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number") {
-        alert("Pilot and Co-pilot names must be strings!");
+        //alert("Pilot and Co-pilot names must be strings!");
     }
 
     if (validateInput(fuelLevel) === "Not a Number" || validateInput(cargoMass) === "Not a Number") {
-        alert("Fuel level and cargo mass must be numbers!");
+        //alert("Fuel level and cargo mass must be numbers!");
     }
 
     faultyItems.style.visibility = "visible";
@@ -83,7 +83,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         launchStatus.innerHTML = "Shuttle is ready for launch";
         launchStatus.style.color = "green";
     } else {
-        launchStatus.innerHTML = "Shuttle not ready for launch";
+        launchStatus.innerHTML = "Shuttle Not Ready for Launch";
         launchStatus.style.color = "red";
     }
 
