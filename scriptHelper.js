@@ -3,10 +3,9 @@
 require('cross-fetch/polyfill');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-    // Here is the HTML formatting for our mission target div.
-    
-      
-              document.innerHTML += `
+    // Here is the HTML formatting for our mission target div.   
+                
+                 document.innerHTML = `
                  <h2>Mission Destination</h2>
                  <ol>
                      <li>Name: ${name}</li>
@@ -17,8 +16,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                  </ol>
                  <img src="${imageUrl}">
                 `;
-                
-
  }
 
  function validateInput(testInput) { 
@@ -47,15 +44,15 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
     if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || 
     validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty") {
-        //alert("All fields are required");       
+        alert("All fields are required");       
     }
 
     if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number") {
-        //alert("Pilot and Co-pilot names must be strings!");
+        alert("Pilot and Co-pilot names must be strings!");
     }
 
     if (validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number") {
-        //alert("Fuel level and cargo mass must be numbers!");
+        alert("Fuel level and cargo mass must be numbers!");
     }
 
     faultyItems.style.visibility = "visible";
